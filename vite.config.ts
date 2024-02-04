@@ -8,14 +8,19 @@ export default defineConfig(() => {
     build: {
       sourcemap: true,
     },
-    server: { port: 5173 },
-    preview: { port: 4173 },
+    server: { 
+      port: 5173,   
+      host: true,
+      strictPort: true,
+      origin: "http://localhost:5173", 
+    },
+    preview: {      
+      port: 5173,   
+      strictPort: true,
+    },
     plugins: [
       react(),
-      svgr({
-
-          include: "**/*.svg?react",
-      }),
+      svgr(),
     ],
     optimizeDeps: {
       include: ["react-dom"],
