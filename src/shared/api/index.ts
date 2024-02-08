@@ -6,7 +6,7 @@ export enum ApiMethod {
   DELETE = "DELETE",
 }
 
-interface FetchApiParams {
+export interface FetchApiParams {
   method: ApiMethod;
   url: string;
   headers?: Record<string, string>;
