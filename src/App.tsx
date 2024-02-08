@@ -6,20 +6,16 @@ import { AppRoutes } from "./shared/router/routes";
 import { HomeScreen } from "./images/ui/screens/HomeScreen";
 
 function App() {
-  return <Routes >
-    <Route element={<ProtectedRoute />}>
-      <Route
-        path={AppRoutes.Home}
-        element={<HomeScreen />}
-      />
-    </Route>
-    <Route element={<GuestRoute />}>
-      <Route
-        path={AppRoutes.Login}
-        element={<LoginScreen />}
-      />
-    </Route>
-  </Routes>;
+  return (
+    <Routes>
+      <Route element={<ProtectedRoute />}>
+        <Route path={AppRoutes.Home} element={<HomeScreen />} />
+      </Route>
+      <Route element={<GuestRoute />}>
+        <Route path={AppRoutes.Login} element={<LoginScreen />} />
+      </Route>
+    </Routes>
+  );
 }
 
 export default App;

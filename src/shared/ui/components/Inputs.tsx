@@ -33,36 +33,29 @@ const outlineInputClasses =
 
 export const Label: FC<{ label: string; id?: string }> = ({ label, id }) => {
   return (
-      <label htmlFor={id} className="cursor-pointer pb-2">
-        <Text>{label}</Text>
-      </label>
+    <label htmlFor={id} className="cursor-pointer pb-2">
+      <Text>{label}</Text>
+    </label>
   );
 };
 
 export const Input = forwardRef(
   (
-    {
-      className,
-      error,
-      label,
-      outlined,
-      ...props
-    }: InputProps,
-    ref: ForwardedRef<HTMLInputElement>,
+    { className, error, label, outlined, ...props }: InputProps,
+    ref: ForwardedRef<HTMLInputElement>
   ) => {
     return (
       <>
         {label ? <Label label={label} id={props.id} /> : null}
         <div
-          className={
-            `
+          className={`
             ${baseInputClasses} 
             text-base 
             ${className ?? ""} 
             ${error ? errorInputClasses : ""} 
             ${outlined ? outlineInputClasses : ""} 
-            `
-          }>
+            `}
+        >
           <input
             ref={ref}
             {...props}
@@ -73,7 +66,7 @@ export const Input = forwardRef(
         </div>
       </>
     );
-  },
+  }
 );
 
 Input.displayName = "Input";
@@ -86,17 +79,17 @@ export const PasswordInput = ({
 }: InputProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const toggleShowPassword = () => {
-    setShowPassword(prevShowPassword => !prevShowPassword);
+    setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   return (
     <>
       {label ? <Label label={label} id={props.id} /> : null}
       <div
-        className={`${baseInputClasses} text-base ${
-          className ?? ""
-        } flex ${error ? errorInputClasses : ""}`}>
-
+        className={`${baseInputClasses} text-base ${className ?? ""} flex ${
+          error ? errorInputClasses : ""
+        }`}
+      >
         <input
           {...props}
           type={showPassword ? "text" : "password"}

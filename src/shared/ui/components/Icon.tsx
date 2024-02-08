@@ -2,7 +2,7 @@ import type { FC } from "react";
 import EyeOff from "./assets/eye-off.svg?react";
 import EyeOn from "./assets/eye-on.svg?react";
 
-export const Icons = {
+const Icons = {
   eyeOff: EyeOff,
   eyeOn: EyeOn,
 };
