@@ -3,11 +3,11 @@ import { environmentService } from "../../shared/environmentService";
 import { DicomPixelData } from "../application/utils";
 
 interface GetImagePatientNameResponse {
-  name: string,
+  name: string;
 }
 
 interface GetImagePixelArrayResponse {
-  pixel_array: DicomPixelData,
+  pixel_array: DicomPixelData;
 }
 
 export class ImagesApi {
@@ -23,7 +23,7 @@ export class ImagesApi {
       url: this.imagesApiEndpoints.patientName,
       method: ApiMethod.GET,
     });
-    return data?.name??"";
+    return data?.name ?? "";
   }
 
   static async getImagePixelArray() {

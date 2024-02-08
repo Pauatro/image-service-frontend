@@ -5,12 +5,12 @@ import { AppRoutes } from "./routes";
 import { validateExpiration } from "../utils";
 
 const ProtectedRoute: FC = () => {
-  const {authToken, expirationTime} = authTokenStore();
+  const { authToken, expirationTime } = authTokenStore();
 
   if (!authToken || !validateExpiration(expirationTime)) {
     return <Navigate to={AppRoutes.Login} replace />;
   }
-    
+
   return <Outlet />;
 };
 
