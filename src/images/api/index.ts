@@ -1,4 +1,5 @@
-import { ApiMethod, fetchApi } from "../../shared/api";
+import { authFetchApi } from "../../auth/api";
+import { ApiMethod } from "../../shared/api";
 import { environmentService } from "../../shared/environmentService";
 import { DicomPixelData } from "../application/utils";
 
@@ -19,7 +20,7 @@ export class ImagesApi {
   };
 
   static async getImagePatientName() {
-    const data = await fetchApi<GetImagePatientNameResponse>({
+    const data = await authFetchApi<GetImagePatientNameResponse>({
       url: this.imagesApiEndpoints.patientName,
       method: ApiMethod.GET,
     });
@@ -27,7 +28,7 @@ export class ImagesApi {
   }
 
   static async getImagePixelArray() {
-    const data = await fetchApi<GetImagePixelArrayResponse>({
+    const data = await authFetchApi<GetImagePixelArrayResponse>({
       url: this.imagesApiEndpoints.pixelArray,
       method: ApiMethod.GET,
     });

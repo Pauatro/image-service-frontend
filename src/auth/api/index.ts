@@ -1,14 +1,15 @@
-import { ApiMethod, fetchApi } from "../../shared/api";
+import { ApiMethod, FetchApiParams, fetchApi } from "../../shared/api";
 import { environmentService } from "../../shared/environmentService";
+import { authTokenStore } from "../application/hooks/authTokenStore";
 
 interface LoginEndpointResponse {
-  access_token: string,
-  expiration_time: number
+  access_token: string;
+  expiration_time: number;
 }
 
 interface LoginEndpointRequestBody {
-  username: string,
-  password: string
+  username: string;
+  password: string;
 }
 
 export class AuthApi {
@@ -24,9 +25,19 @@ export class AuthApi {
       method: ApiMethod.POST,
       data: {
         username,
-        password
+        password,
       } as LoginEndpointRequestBody,
     });
     return tokenData;
   }
 }
+
+export const authFetchApi = async <T = undefined>({
+  headers = {},
+  ...props
+}: FetchApiParams): Promise<T | undefined> => {
+  const bearer = authTokenStore.getState().authToken;
+  const headersWithAuth = { ...headers, Authorization: `Bearer ${bearer}` };
+
+  return fetchApi({ headers: headersWithAuth, ...props });
+};

@@ -32,3 +32,21 @@ Then you can just run the docker compose in the backend project to have everythi
 The test user has the following credentials:
 Username: username
 Pwd: password
+
+## Testing and other checks
+
+For now there's just one logic test since I usually focus on those more than anything but tests for the application hooks and visual components could be added too.
+
+```
+npm run test
+```
+
+It also includes commands for type-checks and lint checks, which could be added to must passes in the pipeline together with the tests:
+
+```
+npm run type-check
+```
+
+```
+npm run lint
+```
